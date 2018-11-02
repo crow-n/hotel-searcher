@@ -869,6 +869,20 @@ export const cities = [{
   ]
 }]
 
+const facilitiesMap = {
+  1: "免费wifi",
+  2: "餐厅",
+  3: "停车场",
+  4: "接机服务",
+  5: "免费洗漱用品",
+  7: "游泳池",
+  8: "健身房",
+  9: "会议室",
+  10: "SPA",
+  12: "24小时热水",
+}
+
+
 // 请求 ============================
 // 查询 酒店 列表,
 // 入住 到 离店 最多 28晚
@@ -903,6 +917,13 @@ export async function searchHotel(params) {
     return res
   }
   const { hotelList, count } = res.data
+  for (let i = 0; i < hotelList.length; i++) {
+    const facilities = hotelList[i].facilities;
+    for (let j = 0; j < facilities.length; j++) {
+      const index = facilities[j];
+      facilities[j] = facilitiesMap[index]
+    }
+  }
   return { hotelList, count }
 }
 
@@ -994,7 +1015,7 @@ function mapAreaFilter(area) {
             pro.pros.map(station => station.name),
           subName: 
             subArea.subName === 'subways' ? 
-            pro.name.replace(/\D*(?=\d)/,'') : 
+            pro.name.replace(/\D*(?=\d)/,'') :  // 将 n号线 前面的文字 去掉
             pro.name
         }
       }
@@ -1003,6 +1024,7 @@ function mapAreaFilter(area) {
   }))
 }
 
+// 处理 品牌 筛选条件
 function mapBrandFilter(brand) {
   const { filterName, filterProsList } = brand
   return { 

@@ -1,9 +1,11 @@
 @charset 'utf-8';
 
 // var =====================
+@screenWidth: 7.5rem;
 @normalColor: #222;
 @grayColor: #999;
 @blue: #4289ff;
+@red: #ff4d1d;
 
 
 // mixin =====================
@@ -32,8 +34,17 @@
   white-space: nowrap;
 }
 
+.clearfix() {
+  &::after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+}
+
 
 // style =====================
+// fashSearchPage
 .filter-form {
   background-color: #fff;
 
@@ -97,6 +108,10 @@
 
   .filter-btn {
     padding: .2rem;
+    
+    .search-btn {
+      .special-btn;
+    }
   }
 }
 
@@ -105,7 +120,7 @@
 }
 
 .city-selector {
-  width: 7.5rem;
+  width: @screenWidth;
 
   .header() {
     @height: .6rem;
@@ -151,7 +166,7 @@
 }
 
 .keyword-selector {
-  width: 7.5rem;
+  width: @screenWidth;
 
   .header {
     position: relative;
@@ -293,7 +308,6 @@
     width: 25%;
     height: @itemHeight;
     padding: .15rem;
-    // .border(all);
     text-align: center;
     font-size: .24rem;
     line-height: 1.5;
@@ -303,5 +317,77 @@
 
   .keyword-card-more {
     color: @blue;
+  }
+}
+
+// HotelResultPage
+.tag {
+  display: inline-block;
+  margin-right: 4px;
+  padding: 0 2px;
+  .border(all, @color:@blue);
+  color: @blue;
+  font-size: .24rem;
+  word-break: keep-all;
+  border-radius: 4px;
+}
+
+.hotel-card {
+  position: relative;
+  .border(b);
+
+  @imgWidth: 2rem;
+  .hotel-card-img {
+    position: absolute;
+    width: @imgWidth;
+    height: 100%;
+  }
+
+  @padding: .15rem;
+  .hotel-card-info {
+    width: @screenWidth - @imgWidth - 2 * @padding;
+    margin-left: @imgWidth;
+    padding: @padding;
+    background-color: #fff;
+    line-height: 1.5;
+
+    .hotel-card-tit {
+      font-size: .3rem;
+    }
+
+    .hotel-card-address {
+      color: #666;
+    }
+  }
+
+  @priceFontSize: .44rem;
+  .start-card-footer {
+    position: relative;
+    height: @priceFontSize;
+    margin-top: .05rem;
+
+    .hotel-card-star {
+      color: @grayColor;
+      font-size: .26rem;
+      vertical-align: bottom;
+    }
+
+    .start-price-txt {
+      position: absolute;
+      top: 0;
+      right: 0;
+      color: @grayColor;
+      font-size: .24rem;
+
+      .yuan {
+        color: @red;
+      }
+
+      .start-price {
+        color: @red;
+        font-size: @priceFontSize;
+        line-height: 1;
+      }
+    }
   }
 }

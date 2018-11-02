@@ -54,6 +54,10 @@
 .filter-form .filter-btn {
   padding: .2rem;
 }
+.filter-form .filter-btn .search-btn {
+  background-color: #ff6913;
+  color: #fff;
+}
 .sidebar {
   background-color: #fff;
 }
@@ -218,4 +222,61 @@
 }
 .keyword-card-body .keyword-card-more {
   color: #4289ff;
+}
+.tag {
+  display: inline-block;
+  margin-right: 4px;
+  padding: 0 2px;
+  border: 1px solid #4289ff;
+  color: #4289ff;
+  font-size: .24rem;
+  word-break: keep-all;
+  border-radius: 4px;
+}
+.hotel-card {
+  position: relative;
+  border-bottom: 1px solid #ddd;
+}
+.hotel-card .hotel-card-img {
+  position: absolute;
+  width: 2rem;
+  height: 100%;
+}
+.hotel-card .hotel-card-info {
+  width: 5.2rem;
+  margin-left: 2rem;
+  padding: 0.15rem;
+  background-color: #fff;
+  line-height: 1.5;
+}
+.hotel-card .hotel-card-info .hotel-card-tit {
+  font-size: .3rem;
+}
+.hotel-card .hotel-card-info .hotel-card-address {
+  color: #666;
+}
+.hotel-card .start-card-footer {
+  position: relative;
+  height: 0.44rem;
+  margin-top: .05rem;
+}
+.hotel-card .start-card-footer .hotel-card-star {
+  color: #999;
+  font-size: .26rem;
+  vertical-align: bottom;
+}
+.hotel-card .start-card-footer .start-price-txt {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #999;
+  font-size: .24rem;
+}
+.hotel-card .start-card-footer .start-price-txt .yuan {
+  color: #ff4d1d;
+}
+.hotel-card .start-card-footer .start-price-txt .start-price {
+  color: #ff4d1d;
+  font-size: 0.44rem;
+  line-height: 1;
 }

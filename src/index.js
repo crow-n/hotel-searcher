@@ -9,14 +9,14 @@ import * as serviceWorker from './serviceWorker';
 //   const filter = await getFilter('深圳')
 //   console.log(filter)
 
-//   // const hotels = await searchHotel({
-//   //   page: 0,
-//   //   cityName: '深圳',
-//   //   sortCode: 3,
-//   //   minPrice: 200,
-//   //   maxPrice: 300
-//   // })
-//   // console.log(hotels)
+  // const hotels = await searchHotel({
+  //   page: 0,
+  //   cityName: '深圳',
+  //   sortCode: 3,
+  //   minPrice: 200,
+  //   maxPrice: 300
+  // })
+  // console.log(hotels)
 
 //   // const hotelDetail = await getHotelDetail(474138)
 //   // console.log(hotelDetail)

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 import { Button } from 'antd-mobile';
 
 import FilterItem from "./FilterItem";
@@ -145,12 +146,11 @@ class FilterForm extends Component {
         />
         {/* 提交 */}
         <div className="filter-btn">
-          <Button style={{
-            backgroundColor: '#ff6913',
-            color: '#fff'
-          }}>查询</Button>
+          <Link to="/hotels">
+            <Button className="search-btn">查询</Button>
+          </Link>
         </div>
-
+        {/* 2级菜单, 用于 关键字 详细展示 */}
         <TwoLevelMenu
           title={this.state.twoLevelMenuTitle}
           twoLevelMenu={this.state.twoLevelMenu}

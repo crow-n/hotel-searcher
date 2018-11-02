@@ -1,23 +1,24 @@
 import React, { Component } from 'react';
-import { HashRouter as Router, Switch, Route } from "react-router-dom";
+import { HashRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 
 import FastSearchPage from "./components/fastSearch/FastSearchPage";
 import './App.css'
+import HotelsResultPage from './components/hotels/HotelsResultPage';
 
 class App extends Component {
   constructor(props) {
     super(props)
     const initDate = this.initDate()
     this.state = {
-      filter: { 
+      filter: {
         keyWords: '',
         page: 0,
         cityName: '北京',
-        inDate: initDate.nowDate, 
-        outDate: initDate.nextDate, 
+        inDate: initDate.nowDate,
+        outDate: initDate.nextDate,
         sortCode: 1,
         star: [],
-        minPrice: '', 
+        minPrice: '',
         maxPrice: '',
       },
       keywordChoices: [
@@ -420,13 +421,13 @@ class App extends Component {
             }
           ]
         }
-      ]
+      ],
     }
   }
 
   setCity(cityName) {
     this.setState(prevState => ({
-      filter: Object.assign(prevState.filter, {cityName})
+      filter: Object.assign(prevState.filter, { cityName })
     }))
   }
 
@@ -435,7 +436,7 @@ class App extends Component {
   }
   initDate() {
     const nowDate = this.formatDate(new Date())
-    const nextDate = this.formatDate(new Date(Date.now() + 1000*60*60*24))
+    const nextDate = this.formatDate(new Date(Date.now() + 1000 * 60 * 60 * 24))
     return {
       nowDate,
       nextDate
@@ -460,7 +461,7 @@ class App extends Component {
 
   setStarAndPrice(star, minPrice, maxPrice) {
     this.setState(prevState => ({
-      filter: Object.assign(prevState.filter, {star, minPrice, maxPrice})
+      filter: Object.assign(prevState.filter, { star, minPrice, maxPrice })
     }))
   }
 
@@ -468,8 +469,8 @@ class App extends Component {
     return (
       <Router>
         <Switch>
-          <Route exac path="/" render={() =>
-            <FastSearchPage 
+          <Route exact path="/" render={() =>
+            <FastSearchPage
               filter={this.state.filter}
               keywordChoices={this.state.keywordChoices}
               setCity={city => this.setCity(city)}
@@ -478,7 +479,12 @@ class App extends Component {
               setKeyWords={keyWords => this.setKeyWords(keyWords)}
               setStarAndPrice={
                 (star, minPrice, maxPrice) => this.setStarAndPrice(star, minPrice, maxPrice)} />
-          }></Route>
+          } />
+          <Route path="/hotels" render={() =>
+            <HotelsResultPage
+              filter={this.state.filter} />
+          } />
+          <Redirect to="/" />
         </Switch>
       </Router>
     );
