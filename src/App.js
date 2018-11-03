@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { HashRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 
 import FastSearchPage from "./components/fastSearch/FastSearchPage";
-import './App.css'
 import HotelsResultPage from './components/hotels/HotelsResultPage';
+import './App.css'
 
 class App extends Component {
   constructor(props) {
@@ -12,12 +12,27 @@ class App extends Component {
     this.state = {
       filter: {
         keyWords: '',
-        page: 0,
         cityName: '北京',
+        page: 0,
         inDate: initDate.nowDate,
         outDate: initDate.nextDate,
-        sortCode: 1,
-        star: [],
+        star: [{
+          type: "TWO,BUDGET",
+          display: "二星及以下/经济",
+          selected: false,
+        },{
+          type: "THREE,CONFORT",
+          display: "三星/舒适",
+          selected: false,
+        },{
+          type: "FOUR,HIGHEND",
+          display: "四星/高档",
+          selected: false,
+        },{
+          type: "FIVE,LUXURY",
+          display: "五星/豪华",
+          selected: false,
+        },],
         minPrice: '',
         maxPrice: '',
       },
@@ -432,7 +447,13 @@ class App extends Component {
   }
 
   formatDate(date) {
-    return date.toLocaleDateString().replace(/\//g, '-')
+    var month = date.getMonth() + 1
+    return date.getFullYear()
+    + "-"
+    + (month >= 10 ? month : "0" + month)
+    + "-"
+    + (date.getDate() < 10 ? "0" + date.getDate() : date
+      .getDate())
   }
   initDate() {
     const nowDate = this.formatDate(new Date())
@@ -482,7 +503,14 @@ class App extends Component {
           } />
           <Route path="/hotels" render={() =>
             <HotelsResultPage
-              filter={this.state.filter} />
+              filter={this.state.filter}
+              keywordChoices={this.state.keywordChoices}
+              setCity={city => this.setCity(city)}
+              setDate={
+                (inDate, outDate) => this.setDate(inDate, outDate)}
+              setKeyWords={keyWords => this.setKeyWords(keyWords)}
+              setStarAndPrice={
+                (star, minPrice, maxPrice) => this.setStarAndPrice(star, minPrice, maxPrice)} />
           } />
           <Redirect to="/" />
         </Switch>

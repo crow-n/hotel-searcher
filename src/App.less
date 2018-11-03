@@ -19,6 +19,9 @@
 .border(t, @width:1px, @color:#ddd) {
   border-top: @width solid @color;
 }
+.border(r, @width:1px, @color:#ddd) {
+  border-right: @width solid @color;
+}
 .border(b, @width:1px, @color:#ddd) {
   border-bottom: @width solid @color;
 }
@@ -42,6 +45,11 @@
   }
 }
 
+.ellipsis() {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
 
 // style =====================
 // fashSearchPage
@@ -321,17 +329,6 @@
 }
 
 // HotelResultPage
-.tag {
-  display: inline-block;
-  margin-right: 4px;
-  padding: 0 2px;
-  .border(all, @color:@blue);
-  color: @blue;
-  font-size: .24rem;
-  word-break: keep-all;
-  border-radius: 4px;
-}
-
 .hotel-card {
   position: relative;
   .border(b);
@@ -339,6 +336,8 @@
   @imgWidth: 2rem;
   .hotel-card-img {
     position: absolute;
+    left: 0;
+    top: 0;
     width: @imgWidth;
     height: 100%;
   }
@@ -360,8 +359,19 @@
     }
   }
 
+  .tag {
+    display: inline-block;
+    margin-right: 4px;
+    padding: 0 2px;
+    .border(all, @color:@blue);
+    color: @blue;
+    font-size: .24rem;
+    word-break: keep-all;
+    border-radius: 4px;
+  }
+
   @priceFontSize: .44rem;
-  .start-card-footer {
+  .hotel-card-footer {
     position: relative;
     height: @priceFontSize;
     margin-top: .05rem;
@@ -389,5 +399,64 @@
         line-height: 1;
       }
     }
+  }
+}
+
+.hotel-result-page {
+  .am-navbar {
+    height: .7rem;
+  }
+
+  .header-search-bar {
+    &.am-search {
+      margin-top: -5px;
+      background-color: #108ee9;
+    }
+    .am-search-cancel {
+      color: #fff;
+    }
+  }
+
+  .header-filter-line {
+    .clearfix;
+    .border(b);
+    background-color: #fff;
+    
+    @height: .3rem;
+    @gap: .2rem;
+    .header-filter-item {
+      .ellipsis();
+
+      float: left;
+      box-sizing: border-box;
+      width: 33.3%;
+      height: @height;
+      margin: @gap 0;
+      padding: 0 @gap;
+      .border(r, @color:#eee);
+      line-height: @height;
+      text-align: center;
+      font-size: .26rem;
+
+      &.header-filter-item-light {
+        color: @blue;
+      }
+    }
+
+    svg {
+      vertical-align: sub;
+    }
+  }
+
+  .totop {
+    display: none;
+    position: fixed;
+    right: .3rem;
+    bottom: .6rem;
+    width: .8rem;
+    height: .8rem;
+    .border(all, @color:#999);
+    background-color: #fff;
+    border-radius: 50%;
   }
 }

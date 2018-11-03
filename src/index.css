@@ -23,7 +23,7 @@ p {margin: 0;}
   transition: z-index 1s
 }
 .am-drawer-open {
-  z-index: 1;
+  z-index: 5;
   transition: z-index 0s
 }
 

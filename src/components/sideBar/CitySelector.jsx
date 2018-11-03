@@ -9,7 +9,6 @@ class CitySelector extends PureComponent {
   }
 
   handleSelectOrSearch(city) {
-    console.log(city)
     this.props.setCity(city)
     this.props.onOpenChange()
   }

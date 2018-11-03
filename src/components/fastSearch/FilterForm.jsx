@@ -45,11 +45,11 @@ class FilterForm extends Component {
   }
 
   formatStarAndPrice(star, minPrice, maxPrice) {
-    star = star.map(v => v.display).join(',')
+    star = star.filter(v => v.selected).map(v => v.display).join('、')
     const range = this.displayRange(minPrice, maxPrice)
     return (
       star +
-      (star && range ? '; ' : '')
+      (star && range ? '、' : '')
       + range
     )
   }
@@ -140,6 +140,9 @@ class FilterForm extends Component {
           drawerPosition="bottom"
           render={(handleOpenChange) =>
             <StarAndPrice
+              star={this.props.filter.star}
+              minPrice={this.props.filter.minPrice}
+              maxPrice={this.props.filter.maxPrice}
               setStarAndPrice={this.props.setStarAndPrice}
               onOpenChange={handleOpenChange} />
           }

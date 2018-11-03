@@ -6,6 +6,7 @@ class HotelCard extends PureComponent {
     const hotel = this.props.hotel
     return (
       <div className="hotel-card">
+        <img className="hotel-card-img" src="./img/defaulthotel.jpg" alt=""/>
         <img className="hotel-card-img" src={
           hotel.pictures[0] && 
           hotel.pictures[0].path} alt=""/>
@@ -19,7 +20,7 @@ class HotelCard extends PureComponent {
               <span className="tag" key={facility}>{facility}</span>
               ))
             }
-          <div className="start-card-footer">
+          <div className="hotel-card-footer">
             <span className="hotel-card-star">{hotel.starName}</span>
             <p className="start-price-txt">
               <span className="yuan">￥</span>

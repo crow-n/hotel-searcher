@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react'
-
 import { Tag, Range } from "antd-mobile";
 
 class StarAndPrice extends PureComponent {
@@ -10,26 +9,14 @@ class StarAndPrice extends PureComponent {
     this.maxPrice = 1000
 
     this.state = {
-      minPrice: this.minPrice,
-      maxPrice: this.maxPrice,
-      star: [{
-        type: "TWO,BUDGET",
-        display: "二星及以下/经济",
-        selected: false,
-      },{
-        type: "THREE,CONFORT",
-        display: "三星/舒适",
-        selected: false,
-      },{
-        type: "FOUR,HIGHEND",
-        display: "四星/高档",
-        selected: false,
-      },{
-        type: "FIVE,LUXURY",
-        display: "五星/豪华",
-        selected: false,
-      },]
+      minPrice: this.props.minPrice ? this.props.minPrice : this.minPrice,
+      maxPrice: this.props.maxPrice ? this.props.maxPrice : this.maxPrice,
+      star: this.props.star.slice(),
     }
+  }
+
+  componentDidMount() {
+    console.log('mount')
   }
 
   handleStarChange(i, selected) {
@@ -74,7 +61,7 @@ class StarAndPrice extends PureComponent {
   }
 
   submit() {
-    const star = this.state.star.filter(v => v.selected)
+    const star = this.state.star.slice()
     let { minPrice, maxPrice } = this.state
     // 如果 maxPrice 为滑动条 所能展示的最大值(事实上这并不是真的 最大值), 将 最大值 置为 空
     if(maxPrice === this.maxPrice) {
