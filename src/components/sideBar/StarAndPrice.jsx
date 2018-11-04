@@ -15,10 +15,6 @@ class StarAndPrice extends PureComponent {
     }
   }
 
-  componentDidMount() {
-    console.log('mount')
-  }
-
   handleStarChange(i, selected) {
     const newStar = this.state.star.slice()
     newStar[i].selected = selected

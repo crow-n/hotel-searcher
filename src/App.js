@@ -3,6 +3,7 @@ import { HashRouter as Router, Switch, Route, Redirect } from "react-router-dom"
 
 import FastSearchPage from "./components/fastSearch/FastSearchPage";
 import HotelsResultPage from './components/hotels/HotelsResultPage';
+import HotelDetail from './components/hotelDetail/HotelDetail';
 import './App.css'
 
 class App extends Component {
@@ -501,7 +502,7 @@ class App extends Component {
               setStarAndPrice={
                 (star, minPrice, maxPrice) => this.setStarAndPrice(star, minPrice, maxPrice)} />
           } />
-          <Route path="/hotels" render={() =>
+          <Route exact path="/hotels" render={() =>
             <HotelsResultPage
               filter={this.state.filter}
               keywordChoices={this.state.keywordChoices}
@@ -512,6 +513,7 @@ class App extends Component {
               setStarAndPrice={
                 (star, minPrice, maxPrice) => this.setStarAndPrice(star, minPrice, maxPrice)} />
           } />
+          <Route exact path="/hotels/hoteldetail/:id" component={HotelDetail} />
           <Redirect to="/" />
         </Switch>
       </Router>

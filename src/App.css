@@ -333,3 +333,221 @@
   background-color: #fff;
   border-radius: 50%;
 }
+.hotel-detail .first-img {
+  position: relative;
+  width: 100%;
+  height: 4rem;
+  background: no-repeat center / cover;
+  color: #fff;
+  font-size: .24rem;
+  line-height: 1.5;
+}
+.hotel-detail .first-img .back {
+  position: absolute;
+  top: 0.2rem;
+  left: 0.2rem;
+  width: 0.6rem;
+  height: 0.6rem;
+  background-color: rgba(0, 0, 0, 0.3);
+  text-align: center;
+  border-radius: 50%;
+}
+.hotel-detail .first-img .back svg {
+  height: 0.6rem;
+}
+.hotel-detail .first-img .name-card {
+  position: absolute;
+  bottom: 0.2rem;
+  left: 0.2rem;
+}
+.hotel-detail .first-img .name-card .name {
+  font-size: .32rem;
+}
+.hotel-detail .first-img .name-card .des {
+  margin-right: .2rem;
+}
+.hotel-detail .first-img .pic-num {
+  position: absolute;
+  bottom: 0.2rem;
+  right: 0.2rem;
+  height: .36rem;
+  border-radius: .2rem;
+}
+.hotel-detail .address-wrapper {
+  display: flex;
+  align-items: center;
+  min-height: 0.8rem;
+  padding: .2rem;
+  margin: .2rem;
+  background-color: #fff;
+  border-radius: .2rem;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+}
+.hotel-detail .address-wrapper .address {
+  width: 90%;
+}
+.hotel-detail .address-wrapper .icon-icon_dingwei-mian-copy {
+  width: 10%;
+  text-align: center;
+  color: #4289ff;
+  font-size: .5rem;
+}
+.hotel-detail .room-accordion .am-accordion-header {
+  display: flex;
+  align-items: center;
+  height: 2rem;
+  border-bottom: 1px solid #ddd !important;
+  line-height: 1.5;
+}
+.hotel-detail .room-accordion .am-accordion-header .arrow {
+  top: initial;
+}
+.hotel-detail .room-accordion .room-accordion-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.hotel-detail .room-accordion .room-img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+}
+.hotel-detail .room-accordion .room-img img {
+  width: 2rem;
+  height: 100%;
+}
+.hotel-detail .room-accordion .room-img .pic-num {
+  position: absolute;
+  bottom: 0.1rem;
+  right: 0.1rem;
+  height: .36rem;
+  padding: 0 .15rem;
+  line-height: .36rem;
+  background-color: rgba(0, 0, 0, 0.3);
+  text-align: center;
+  color: #fff;
+  font-size: .24rem;
+  border-radius: .2rem;
+}
+.hotel-detail .room-accordion .room-info {
+  margin-left: 2rem;
+}
+.hotel-detail .room-accordion .room-info .room-name {
+  font-size: .3rem;
+}
+.hotel-detail .room-accordion .room-info .room-price {
+  float: right;
+  right: 0;
+}
+.hotel-detail .room-accordion .des-line::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.hotel-detail .room-accordion .des {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  float: left;
+  font-size: .24rem;
+  color: #666;
+  margin-right: .2rem;
+}
+.hotel-detail .room-accordion .green {
+  color: #2eb000;
+}
+.hotel-detail .room-accordion .room-price {
+  margin-right: .3rem;
+  font-size: .24rem;
+  color: #ff4d1d;
+}
+.hotel-detail .room-accordion .room-price .start-price {
+  font-size: .42rem;
+  font-weight: bold;
+}
+.hotel-detail .room-accordion .pay-type {
+  padding: .09rem;
+  background-color: #ff6913;
+  font-size: .26rem;
+  color: #fff;
+  border-radius: 0.1rem;
+}
+.hotel-detail .room-accordion .am-accordion-content {
+  background: initial;
+}
+.hotel-detail .room-accordion .am-list-body {
+  background-color: initial;
+}
+.hotel-detail .room-accordion .am-list-item {
+  margin: .2rem;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+  border-radius: .2rem;
+}
+.hotel-detail .room-plan {
+  display: flex;
+  align-items: center;
+}
+.hotel-detail .room-plan .room-plan-des {
+  float: left;
+  width: 55%;
+  border-right: 1px solid #eee;
+}
+.hotel-detail .room-plan .room-plan-des .room-plan-brief {
+  font-size: .3rem;
+}
+.hotel-detail .room-plan .room-pay {
+  float: left;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 45%;
+}
+.room-detail {
+  overflow: scroll;
+  height: 88vh;
+  background-color: #fff;
+}
+.room-detail .room-detail-tit {
+  height: 0.8rem;
+  padding-left: .2rem;
+  background-color: #eee;
+  color: #666;
+  font-size: .3rem;
+  line-height: .8rem;
+}
+.room-detail .info-block {
+  padding: 0.2rem;
+  border-bottom: 1px solid #eee;
+  font-size: .26rem;
+  white-space: normal;
+}
+.room-detail .info-block li {
+  margin-bottom: .1rem;
+}
+.room-detail .info-block li::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.room-detail .info-block .info-line-tit {
+  margin-right: .3rem;
+  color: #999;
+}
+.room-detail .info-block .info-line-label {
+  float: left;
+  width: 1.6rem;
+  color: #999;
+}
+.room-detail .info-block .info-line-cnt {
+  float: left;
+  width: 5.5rem;
+}
+.room-detail .info-block .info-p {
+  margin-top: .3rem;
+}
+.room-detail .info-block .pay-type-pos {
+  float: right;
+  margin-right: .1rem;
+}

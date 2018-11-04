@@ -18,15 +18,15 @@ import * as serviceWorker from './serviceWorker';
   // })
   // console.log(hotels)
 
-//   // const hotelDetail = await getHotelDetail(474138)
-//   // console.log(hotelDetail)
+  // const hotelDetail = await getHotelDetail(474138)
+  // console.log(hotelDetail)
 
-//   // const rooms = await getRooms({
-//   //   hotelId: 540562,
-//   //   inDate: '2018-10-28',
-//   //   outDate: '2018-10-29'
-//   // })
-//   // console.log(rooms)
+//   const rooms = await getRooms({
+//     hotelId: 474138,
+//     inDate: '2018-11-04',
+//     outDate: '2018-11-06'
+//   })
+//   console.log(rooms)
 // }
 // a()
 

@@ -6,6 +6,8 @@
 @grayColor: #999;
 @blue: #4289ff;
 @red: #ff4d1d;
+@orange: #ff6913;
+@green: #2eb000;
 
 
 // mixin =====================
@@ -24,6 +26,14 @@
 }
 .border(b, @width:1px, @color:#ddd) {
   border-bottom: @width solid @color;
+}
+
+.box-shadow(@width:6px;@alpha:.1) {
+  box-shadow: 0 0 @width rgba(0,0,0,@alpha);
+}
+
+.round() {
+  border-radius: 50%;
 }
 
 .special-btn() {
@@ -457,6 +467,273 @@
     height: .8rem;
     .border(all, @color:#999);
     background-color: #fff;
-    border-radius: 50%;
+    .round;
+  }
+}
+
+.hotel-detail {
+  .alpha() {
+    background-color: rgba(0, 0, 0, 0.3);
+    text-align: center;
+  }
+
+  .first-img {
+    position: relative;
+    width: 100%;
+    height: 4rem;
+    background: no-repeat center / cover;
+    color: #fff;
+    font-size: .24rem;
+    line-height: 1.5;
+
+    
+    @gap: 0.2rem;
+    
+    .back {
+      @diameter: .6rem;
+      
+      position: absolute;
+      top: @gap;
+      left: @gap;
+      width: @diameter;
+      height: @diameter;
+      .alpha;
+      .round;
+
+      svg {
+        height: @diameter;
+      }
+    }
+
+    .name-card {
+      position: absolute;
+      bottom: @gap;
+      left: @gap;
+
+      .name {
+        font-size: .32rem;
+      }
+      .des {
+        margin-right: .2rem;
+      }
+    }
+
+    .pic-num {
+      position: absolute;
+      bottom: @gap;
+      right: @gap;
+      height: .36rem;
+      border-radius: .2rem;
+    }
+  }
+
+  @minHeight: .8rem;
+  @dingweiWidth: 10%;
+  .address-wrapper {
+    display: flex;
+    align-items: center;
+    min-height: @minHeight;
+    padding: .2rem;
+    margin: .2rem;
+    background-color: #fff;
+    border-radius: .2rem;
+    .box-shadow;
+
+    .address {
+      width: 100% - @dingweiWidth;
+    }
+
+    .icon-icon_dingwei-mian-copy {
+      width: @dingweiWidth;
+      text-align: center;
+      color: @blue;
+      font-size: .5rem;
+    }
+  }
+
+  .room-accordion {
+    // 以下为 accordion-header
+    .am-accordion-header {
+      display: flex;
+      align-items: center;
+      height: 2rem;
+      .border(b) !important;
+      line-height: 1.5;
+
+      .arrow {
+        top: initial;
+      }
+    }
+    
+    .room-accordion-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+
+    @imgWidth: 2rem;
+    .room-img {
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+
+      img {
+        width: @imgWidth;
+        height: 100%;
+      }
+
+      @gap: .1rem;
+      .pic-num {
+        position: absolute;
+        bottom: @gap;
+        right: @gap;
+        height: .36rem;
+        padding: 0 .15rem;
+        line-height: .36rem;
+        .alpha;
+        color: #fff;
+        font-size: .24rem;
+        border-radius: .2rem;
+      }
+    }
+
+    .room-info {
+      margin-left: @imgWidth;
+
+      .room-name {
+        font-size: .3rem;
+      }
+
+      .room-price {
+        float: right;
+        right: 0;
+      }
+    }
+
+    .des-line {
+      .clearfix;
+    }
+    .des {
+      .ellipsis;
+      float: left;
+      font-size: .24rem;
+      color: #666;
+      margin-right: .2rem;
+    }
+    .green {
+      color: @green;
+    }
+
+    .room-price {
+      margin-right: .3rem;
+      font-size: .24rem;
+      color: @red;
+
+      .start-price {
+        font-size: .42rem;
+        font-weight: bold;
+      }
+    }
+
+    .pay-type {
+      padding: .09rem;
+      background-color: @orange;
+      font-size: .26rem;
+      color: #fff;
+      border-radius: 0.1rem;
+    }
+
+    // 以下为 accordion-content
+    .am-accordion-content {
+      background: initial;
+    }
+    .am-list-body {
+      background-color: initial;
+    }
+    .am-list-item {
+      margin: .2rem;
+      .box-shadow;
+      border-radius: .2rem;
+    }
+  }
+
+  .room-plan {
+    display: flex;
+    align-items: center;
+
+    .room-plan-des {
+      float: left;
+      width: 55%;
+      .border(r,@color:#eee);
+
+      .room-plan-brief {
+        font-size: .3rem;
+      }
+    }
+
+    .room-pay {
+      float: left;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      width: 45%;
+    }
+  } 
+}
+
+.room-detail {
+  overflow: scroll;
+  height: 88vh;
+  background-color: #fff;
+
+  .room-detail-tit {
+    height: 0.8rem;
+    padding-left: .2rem;
+    background-color: #eee;
+    color: #666;
+    font-size: .3rem;
+    line-height: .8rem;
+  }
+
+  .info-block {
+    @padding: 0.2rem;
+    @labelWidth: 1.6rem;
+
+    padding: @padding;
+    .border(b,@color:#eee);
+    font-size: .26rem;
+    white-space: normal;
+    
+    li {
+      .clearfix;
+      margin-bottom: .1rem;
+    }
+
+    .info-line-tit {
+      margin-right: .3rem;
+      color: #999;
+    }
+    
+    .info-line-label {
+      float: left;
+      width: @labelWidth;
+      color: #999;
+    }
+
+    .info-line-cnt {
+      float: left;
+      width: 7.5rem - 2 * @padding - @labelWidth;
+    }
+
+    .info-p {
+      margin-top: .3rem;
+    }
+
+    .pay-type-pos {
+      float: right;
+      margin-right: .1rem;
+    }
   }
 }
