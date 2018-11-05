@@ -35,7 +35,7 @@ const item = (plan, onOpenChange) => (
   <div className="room-plan" onClick={onOpenChange}>
     <div className="room-plan-des">
       <div className="room-plan-brief">
-        <span className={plan.breakfast !== "无早" && "green"}>
+        <span className={plan.breakfast !== "无早" ? "green" : ""}>
           {plan.breakfast}
         </span>
         &nbsp;&nbsp;&nbsp;&nbsp;
@@ -45,9 +45,12 @@ const item = (plan, onOpenChange) => (
         <div className="des" style={{ width: '100%' }}>{plan.name}</div>
       </div>
       <div className="des-line">
-        <div className={"des " +
-          (plan.cancel.name !== "不可取消" && "green")}>
-          {plan.cancel.name}</div>
+        {
+          plan.cancel &&
+          <div className={"des " +
+            (plan.cancel.name !== "不可取消" && "green")}>
+            {plan.cancel.name}</div>
+        }
         <div className="des green">{plan.available}</div>
       </div>
     </div>

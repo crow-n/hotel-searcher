@@ -502,20 +502,82 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  width: 45%;
+  width: 50%;
+}
+.hotel-detail .detail-info {
+  margin-top: .2rem;
+  padding: .2rem;
+  background-color: #fff;
+}
+.hotel-detail .detail-info .detail-info-tit {
+  margin-bottom: .2rem;
+  font-size: .36rem;
+}
+.hotel-detail .detail-info .detail-line-tit {
+  display: inline-block;
+  width: 1.5rem;
+  margin-bottom: .1rem;
+  color: #666;
+}
+.hotel-detail .detail-info .detail-block-tit {
+  margin-top: .3rem;
+  margin-bottom: .1rem;
+  font-size: .3rem;
+}
+.hotel-detail .detail-info .poi-tabs {
+  overflow: hidden;
+  height: 4rem;
+  border: 1px solid #4289ff;
+  border-radius: .1rem;
+}
+.hotel-detail .detail-info .poi-tabs .poi-tabs-cnt {
+  margin: .2rem;
+}
+.hotel-detail .detail-info .poi-tabs .poi-tabs-line {
+  margin-bottom: .2rem;
+}
+.hotel-detail .detail-info .poi-tabs .poi-tabs-distance {
+  color: #999;
+}
+.hotel-detail .detail-info .long-p {
+  color: #666;
+  margin-bottom: .2rem;
 }
 .room-detail {
-  overflow: scroll;
-  height: 88vh;
+  overflow-y: scroll;
+  height: 75vh;
+  margin: 0.8rem 0 1rem;
   background-color: #fff;
 }
 .room-detail .room-detail-tit {
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  box-sizing: border-box;
+  width: 100%;
   height: 0.8rem;
   padding-left: .2rem;
   background-color: #eee;
   color: #666;
   font-size: .3rem;
   line-height: .8rem;
+}
+.room-detail .room-carousel {
+  position: relative;
+}
+.room-detail .room-carousel .room-carousel-item {
+  height: 4.4rem;
+}
+.room-detail .room-carousel .room-carousel-item img {
+  width: 100%;
+  height: 100%;
+}
+.room-detail .room-carousel .pic-num {
+  position: absolute;
+  right: .25rem;
+  bottom: .15rem;
+  color: #fff;
+  font-size: .3rem;
 }
 .room-detail .info-block {
   padding: 0.2rem;
@@ -547,7 +609,57 @@
 .room-detail .info-block .info-p {
   margin-top: .3rem;
 }
-.room-detail .info-block .pay-type-pos {
+.room-detail .info-block.pay-block {
+  position: absolute;
+  bottom: 0;
+  box-sizing: border-box;
+  width: 100%;
+  height: 1rem;
+  border-top: 1px solid #eee;
+  background-color: #fff;
+}
+.room-detail .info-block.pay-block .pay-type {
   float: right;
   margin-right: .1rem;
+}
+.pic-carousel {
+  width: 100vw;
+  height: 100%;
+  background-color: #000;
+  color: #fff;
+}
+.pic-carousel .pic-num {
+  padding: .8rem 0 1.8rem;
+  text-align: center;
+}
+.pic-carousel .pic-carousel-item {
+  height: 5rem;
+}
+.pic-carousel .pic-carousel-item img {
+  width: 100%;
+  height: 100%;
+}
+.pic-carousel .pic-name {
+  position: absolute;
+  bottom: 10%;
+  left: .32rem;
+}
+.map-container {
+  position: relative;
+  width: 100vw;
+  height: 100%;
+}
+.map-container .back {
+  position: absolute;
+  z-index: 10;
+  top: 0.3rem;
+  left: 0.3rem;
+  width: 0.8rem;
+  height: 0.8rem;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 50%;
+}
+.map-container .back svg {
+  height: 0.8rem;
 }

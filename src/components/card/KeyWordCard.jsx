@@ -18,6 +18,7 @@ class KeyWordCard extends PureComponent {
   }
 
   listDeepMap(list) {
+    // 如果是 string数组, 直接返回
     if(typeof list[0] === 'string') {
       return list
     }
@@ -27,7 +28,9 @@ class KeyWordCard extends PureComponent {
       let j = 0
       for (; j < subList.length; j++) {
         const item = subList[j]
+
         mapList.push(item)
+        // mapList 最多装 7个, 留下 1个位置 装 '更多...'
         if(mapList.length === 7) break
       }
       if(j < subList.length) break
@@ -36,8 +39,8 @@ class KeyWordCard extends PureComponent {
     return mapList
   }
 
-  openTwoLevelMenu(title, filter) {
-    this.props.setTwoLevelMenu(title, filter)
+  openTwoLevelMenu(title, list) {
+    this.props.setTwoLevelMenu(title, list)
     this.props.twoLevelMenuOpenChange(this.props.onOpenChange)
   }
 
@@ -46,7 +49,7 @@ class KeyWordCard extends PureComponent {
       <Card className={this.props.className}>
         <Card.Header
           title={this.props.title}
-          // list 没有 子列表, 并且 长度大于8, 才显示 icon
+          // list 没有 子列表, 并且 长度大于8, 才显示 展开收起的 icon
           extra={
             this.props.list && 
             typeof this.props.list[0] === 'string' &&

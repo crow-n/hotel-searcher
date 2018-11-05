@@ -11,38 +11,45 @@ class FilterItem extends PureComponent {
   }
 
   render() {
-    let children = null
-    if (this.props.type === 'title') {
-      children = <div>
-        <span>{this.props.title}</span>
-        <p className="value">{this.props.value}</p>
-      </div>
-    }
-    else if (this.props.type === 'date') {
-      children = <div>
-        <div className="filter-date">
-          <span>入住</span>
-          <p className="value">{this.props.startTime}</p>
-        </div>
+    const children = () => {
+      switch (this.props.type) {
 
-        <div className="filter-date-count">
-          <span>{this.props.days}</span>
-          &nbsp;晚
-          </div>
+        case 'title':
+          return (<div>
+            <span>{this.props.title}</span>
+            <p className="value">{this.props.value}</p>
+          </div>)
 
-        <div className="filter-date">
-          <span>离店</span>
-          <p className="value">{this.props.endTime}</p>
-        </div>
-      </div>
-    }
-    else if (this.props.type === 'single') {
-      children =
-        <p className={
-          this.props.value ? "single value" : "single"
-        }>{
-          this.props.value ? this.props.value : this.props.placeholder
-        }</p>
+        case 'date':
+          return (<div>
+            <div className="filter-date">
+              <span>入住</span>
+              <p className="value">{this.props.startTime}</p>
+            </div>
+    
+            <div className="filter-date-count">
+              <span>{this.props.days}</span>
+              &nbsp;晚
+              </div>
+    
+            <div className="filter-date">
+              <span>离店</span>
+              <p className="value">{this.props.endTime}</p>
+            </div>
+          </div>)
+
+        case 'single':
+          return (
+            <p className={
+              this.props.value ? "single value" : "single"
+            }>{
+              this.props.value ? this.props.value : this.props.placeholder
+            }</p>
+          )
+      
+        default:
+          return null
+      }
     }
 
     return (
@@ -63,7 +70,7 @@ class FilterItem extends PureComponent {
           className="filter-item"
           onClick={this.onOpenChange}
         >
-          {children}
+          {children()}
           <Icon className="icon-right" type="right"/>
         </div>
       </div>

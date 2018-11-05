@@ -1,12 +1,30 @@
 import React, { PureComponent } from 'react'
+import { Carousel } from "antd-mobile";
 
 class RoomDetail extends PureComponent {
   render() {
     const room = this.props.room
     const plan = this.props.plan
+    const pictures = room.pictures
     return (
       <div className="room-detail">
         <div className="room-detail-tit">{room.roomNameCn}</div>
+
+        <div className="room-carousel">
+          <Carousel 
+            infinite={true} 
+            dots={false}
+            afterChange={i => 
+              this.refs.picNum.innerText = i + 1 + "/" + pictures.picCount}
+          >{
+            pictures.pics.map((pic) => 
+              <div className="room-carousel-item" key={pic.picId}>
+                <img src={pic.path} alt=""/>
+              </div>
+            )
+          }</Carousel>
+          <span ref="picNum" className="pic-num">1/{pictures.picCount}</span>
+        </div>
 
         <ul className="info-block">
           <li>
@@ -52,21 +70,25 @@ class RoomDetail extends PureComponent {
           <span className="info-line-tit">加床</span>
           {room.isExtraBed}
 
-          <div className="info-p">
-            <div className="info-line-tit">{plan.cancel.name}</div>
-            {plan.cancel.desc}
-          </div>
+          {
+            plan.cancel &&
+            <div className="info-p">
+              <div className="info-line-tit">{plan.cancel.name}</div>
+              {plan.cancel.desc}
+            </div>
+          }
         </div>
 
-        <div className="info-block">
+        <div className="info-block pay-block">
           {plan.priceCalendar.length}晚总价：
           <span className="room-price">￥
             <span className="start-price">{
+              // * / 1000 处理精度问题
               plan.priceCalendar.reduce((count,datePrice) => 
-                count + datePrice.prices * 1, 0)
+                count + datePrice.prices * 1000, 0) / 1000
             }</span>
           </span>
-          <span className="pay-type pay-type-pos">{plan.payType}</span>
+          <span className="pay-type">{plan.payType}</span>
         </div>
       </div>
     )

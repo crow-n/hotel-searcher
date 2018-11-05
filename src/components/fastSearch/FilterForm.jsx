@@ -11,7 +11,7 @@ import TwoLevelMenu from '../sideBar/TwoLevelMenu';
 
 class FilterForm extends Component {
   state = {
-    open: false,
+    twoLevelMenuOpen: false,
     twoLevelMenuTitle: '',
     twoLevelMenu: [],
   }
@@ -29,8 +29,8 @@ class FilterForm extends Component {
     )
   }
 
-  setTwoLevelMenu(title, filter) {
-    const twoLevelMenu = filter.map((subList, i) => ({
+  setTwoLevelMenu(title, list) {
+    const twoLevelMenu = list.map((subList, i) => ({
       value: i,
       label: subList.subName,
       children: subList.subProsList.map((item, j) => ({
@@ -42,6 +42,11 @@ class FilterForm extends Component {
       twoLevelMenuTitle: title,
       twoLevelMenu,
     })
+  }
+
+  onOpenChange (onFatherOpenChange) {
+    this.setState({ twoLevelMenuOpen: !this.state.twoLevelMenuOpen })
+    this.onFatherOpenChange = onFatherOpenChange
   }
 
   formatStarAndPrice(star, minPrice, maxPrice) {
@@ -67,11 +72,6 @@ class FilterForm extends Component {
     else {
       return ""
     }
-  }
-
-  onOpenChange (onFatherOpenChange) {
-    this.setState({ open: !this.state.open })
-    this.onFatherOpenChange = onFatherOpenChange
   }
 
   render() {
@@ -125,8 +125,8 @@ class FilterForm extends Component {
             <KeyWordSelector
               keywordChoices={this.props.keywordChoices}
               setKeyWords={this.props.setKeyWords}
-              setTwoLevelMenu={(title, filter) => 
-                this.setTwoLevelMenu(title, filter)}
+              setTwoLevelMenu={(title, list) => 
+                this.setTwoLevelMenu(title, list)}
               onOpenChange={handleOpenChange}
               twoLevelMenuOpenChange={
                 (onFatherOpenChange) => this.onOpenChange(onFatherOpenChange)} />}
@@ -158,7 +158,7 @@ class FilterForm extends Component {
           title={this.state.twoLevelMenuTitle}
           twoLevelMenu={this.state.twoLevelMenu}
           setKeyWords={this.props.setKeyWords}
-          open={this.state.open}
+          open={this.state.twoLevelMenuOpen}
           onOpenChange={() => this.onOpenChange()}
           onFatherOpenChange={this.onFatherOpenChange} />
       </div>

@@ -11,26 +11,25 @@ class CustomDrawer extends PureComponent {
   }
 
   render() {
-    return (
-      <div>
-        <Drawer 
-          position={this.props.position}
-          sidebar={
-            this.props.render ?
+    return (<div>
+      <Drawer
+        position={this.props.position}
+        transitions={this.props.transitions === false ? false : true}
+        sidebar={
+          this.props.render ?
             this.props.render(this.onOpenChange) :
             this.props.sidebar
-          } 
-          open={this.state.open} 
-          onOpenChange={this.onOpenChange}
-        >
-          <div></div> {/* Drawer规定必须有children, 这里的div只是防报错 */} 
-        </Drawer>
-        {
-          this.props.trigger &&
-          this.props.trigger(this.onOpenChange)
         }
-      </div>
-    )
+        open={this.state.open}
+        onOpenChange={this.onOpenChange}
+      >
+        <div></div> {/* Drawer规定必须有children, 这里的div只是防报错 */}
+      </Drawer>
+      {
+        this.props.trigger &&
+        this.props.trigger(this.onOpenChange)
+      }
+    </div>)
   }
 }
 
