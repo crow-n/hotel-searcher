@@ -3,8 +3,8 @@ import axios from 'axios'
 // 常量设置 ========================
 axios.defaults.baseURL = 'https://route.showapi.com/'
 
-const showapi_appid = '78519'
-const showapi_sign = '46dd16062e284b4d91bf18fe551d0ccf'
+const showapi_appid = ''
+const showapi_sign = ''
 
 export const onePageNum = 30
 // 原 获取城市 的接口返回数据格式混乱, 鉴于这些数据基本不会变, 我将它设置为常量

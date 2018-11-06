@@ -48,6 +48,7 @@ class TwoLevelMenu extends PureComponent {
             {this.props.title}
           </NavBar>
           <Menu
+            value={[0]}
             data={this.props.twoLevelMenu}
             onChange={(selectArr) => this.handleChange(selectArr)}
             // 45 为 NavBar 固定高度

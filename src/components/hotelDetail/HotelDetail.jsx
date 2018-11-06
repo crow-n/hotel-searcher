@@ -32,6 +32,58 @@ const firstImg = (detail, onOpenChange) => (
   </div>
 )
 
+const detailInfo = (detail) => (
+  <div className="detail-info">
+    <div className="detail-info-tit">酒店详情</div>
+    <p>
+      <span className="detail-line-tit">电话</span>
+      {detail.hotelTel}
+    </p>
+    <p>
+      <span className="detail-line-tit">开张时间</span>
+      {detail.debutYear}年
+          </p>
+    <p>
+      <span className="detail-line-tit">房间数</span>
+      {detail.roomNum}
+    </p>
+
+    <p className="detail-block-tit">交通地点</p>
+    <div className="poi-tabs">
+      <Tabs
+        initialPage={1}
+        tabBarPosition="left"
+        tabs={
+          detail.pois.map((poi) => (
+            { title: poi.name }
+          ))}
+        renderTabBar={props => <Tabs.DefaultTabBar {...props} page={5} />}
+      >{
+          detail.pois.map((poi, i) => (
+            <div className="poi-tabs-cnt" key={i}>{
+              poi.subPois.map((subPoi, j) => (
+                <div className="poi-tabs-line" key={j}>
+                  <p>{subPoi.subName}</p>
+                  <p className="poi-tabs-distance">{parseInt(subPoi.distance * 100) / 100}公里</p>
+                </div>
+              ))
+            }</div>
+          ))
+        }</Tabs>
+    </div>
+
+    <p className="detail-block-tit">酒店政策</p>
+    {
+      detail.policy.map((v, i) => (
+        <p className="long-p" key={i}>{v.policyName}：{v.policyDesription}</p>
+      ))
+    }
+
+    <p className="detail-block-tit">酒店介绍</p>
+    <p className="long-p">{detail.introduction}</p>
+  </div>
+)
+
 class HotelDetail extends PureComponent {
   state = {
     detail: null,
@@ -44,35 +96,36 @@ class HotelDetail extends PureComponent {
     const outDate = this.props.outDate
 
     getHotelDetail(hotelId)
-    .then(detail => {
-      if(typeof detail !== 'string') {
-        this.setState({
-          detail
-        })
-      } else {
-        Toast.info(detail, 2)
-      }
-    })
+      .then(detail => {
+        if (typeof detail !== 'string') {
+          this.setState({
+            detail
+          })
+        } else {
+          Toast.info(detail, 2)
+        }
+      })
 
-    getRooms({hotelId, inDate, outDate})
-    .then(rooms => {
-      if(typeof rooms !== 'string') {
-        this.setState({
-          rooms
-        })
-      } else {
-        Toast.info(rooms, 2)
-      }
-    })
+    getRooms({ hotelId, inDate, outDate })
+      .then(rooms => {
+        if (typeof rooms !== 'string') {
+          this.setState({
+            rooms
+          })
+        } else {
+          Toast.info(rooms, 2)
+        }
+      })
   }
 
   render() {
     const detail = this.state.detail
     const rooms = this.state.rooms
-    if(detail === null) return <div></div>
+    if (detail === null) return <div></div>
 
     return (
       <div className="hotel-detail">
+        {/* 头图 */}
         <CustomDrawer
           position="right"
           transitions={false}
@@ -84,7 +137,7 @@ class HotelDetail extends PureComponent {
             firstImg(detail, handleOpenChange)
           }
         />
-
+        {/* 地图 */}
         <CustomDrawer
           position="right"
           transitions={false}
@@ -100,59 +153,10 @@ class HotelDetail extends PureComponent {
             </div>
           }
         />
-
-
+        {/* 房间信息 */}
         <RoomAccordion rooms={rooms} />
-
-        <div className="detail-info">
-          <div className="detail-info-tit">酒店详情</div>
-          <p>
-            <span className="detail-line-tit">电话</span>
-            {detail.hotelTel}
-          </p>
-          <p>
-            <span className="detail-line-tit">开张时间</span>
-            {detail.debutYear}年
-          </p>
-          <p>
-            <span className="detail-line-tit">房间数</span>
-            {detail.roomNum}
-          </p>
-
-          <p className="detail-block-tit">交通地点</p>
-          <div className="poi-tabs">
-            <Tabs 
-              initialPage={1}
-              tabBarPosition="left"
-              tabs={
-                detail.pois.map((poi) => (
-                  { title: poi.name }
-              ))}
-              renderTabBar={props => <Tabs.DefaultTabBar {...props} page={5} />}
-            >{
-              detail.pois.map((poi,i) => (
-                <div className="poi-tabs-cnt" key={i}>{
-                  poi.subPois.map((subPoi,j) => (
-                    <div className="poi-tabs-line" key={j}>
-                      <p>{subPoi.subName}</p>
-                      <p className="poi-tabs-distance">{parseInt(subPoi.distance * 100) / 100}公里</p>
-                    </div>
-                  ))
-                }</div>
-              ))
-            }</Tabs>
-          </div>
-
-          <p className="detail-block-tit">酒店政策</p>
-          {
-            detail.policy.map((v, i) => (
-              <p className="long-p" key={i}>{v.policyName}：{v.policyDesription}</p>
-            ))
-          }
-
-          <p className="detail-block-tit">酒店介绍</p>
-          <p className="long-p">{detail.introduction}</p>
-        </div>
+        {/* 酒店详情 */}
+        {detailInfo(detail)}
       </div>
     )
   }

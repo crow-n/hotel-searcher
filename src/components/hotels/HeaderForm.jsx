@@ -25,13 +25,13 @@ const sortCodeMap = [
 
 class HeaderForm extends Component {
   state = {
-    open: false,
+    twoLevelMenuOpen: false,
     twoLevelMenuTitle: '',
     twoLevelMenu: [],
   }
 
-  setTwoLevelMenu(title, filter) {
-    const twoLevelMenu = filter.map((subList, i) => ({
+  setTwoLevelMenu(title, list) {
+    const twoLevelMenu = list.map((subList, i) => ({
       value: i,
       label: subList.subName,
       children: subList.subProsList.map((item, j) => ({
@@ -46,7 +46,7 @@ class HeaderForm extends Component {
   }
 
   onOpenChange (onFatherOpenChange) {
-    this.setState({ open: !this.state.open })
+    this.setState({ twoLevelMenuOpen: !this.state.twoLevelMenuOpen })
     this.onFatherOpenChange = onFatherOpenChange
   }
 
@@ -88,7 +88,6 @@ class HeaderForm extends Component {
     const starAndPrice = this.formatStarAndPrice(filter)
 
     return (<div>
-      <Link to="/" ref={el => this.back = el} />
       <NavBar
         icon={<Link to="/">
           <Icon type="left" color="#fff" style={{verticalAlign:'middle'}}/>
@@ -137,7 +136,7 @@ class HeaderForm extends Component {
         title={this.state.twoLevelMenuTitle}
         twoLevelMenu={this.state.twoLevelMenu}
         setKeyWords={this.props.setKeyWords}
-        open={this.state.open}
+        open={this.state.twoLevelMenuOpen}
         onOpenChange={() => this.onOpenChange()}
         onFatherOpenChange={this.onFatherOpenChange} />
 
@@ -204,8 +203,7 @@ class HeaderForm extends Component {
               }<Icon type="down" size="xxs" />
             </div>
           }
-        />
-        
+        /> 
       </div>
     </div>)
   }
