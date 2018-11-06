@@ -60,6 +60,11 @@ UI使用ant design mobile，使用方式请自行搜索API文档
 &nbsp;
 &nbsp;
 
+![关键字二级菜单](https://github.com/crow-n/hotel-searcher/raw/master/preview/keywords.gif)
+
+&nbsp;
+&nbsp;
+
 ![查询到的酒店列表](https://github.com/crow-n/hotel-searcher/raw/master/preview/hotels.gif)
 
 &nbsp;
