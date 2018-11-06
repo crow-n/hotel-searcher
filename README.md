@@ -55,27 +55,27 @@ UI使用ant design mobile，使用方式请自行搜索API文档
 
 ### 项目展示
 
-![设置筛选条件](https://github.com/crow-n/million-menus/raw/master/preview/fastsearch.gif)
+![设置筛选条件](https://github.com/crow-n/hotel-searcher/raw/master/preview/fastsearch.gif)
 
 &nbsp;
 &nbsp;
 
-![查询到的酒店列表](https://github.com/crow-n/million-menus/raw/master/preview/hotels.gif)
+![查询到的酒店列表](https://github.com/crow-n/hotel-searcher/raw/master/preview/hotels.gif)
 
 &nbsp;
 &nbsp;
 
-![酒店详情页-图片浏览,定位地图](https://github.com/crow-n/million-menus/raw/master/preview/hoteldetail1.gif)
+![酒店详情页-图片浏览,定位地图](https://github.com/crow-n/hotel-searcher/raw/master/preview/hoteldetail1.gif)
 
 &nbsp;
 &nbsp;
 
-![酒店详情页-房间列表 及 房间详情页 ](https://github.com/crow-n/million-menus/raw/master/preview/rooms.gif)
+![酒店详情页-房间列表 及 房间详情页 ](https://github.com/crow-n/hotel-searcher/raw/master/preview/rooms.gif)
 
 &nbsp;
 &nbsp;
 
-![酒店详情页-周边交通景点](https://github.com/crow-n/million-menus/raw/master/preview/hoteldetail2.gif)
+![酒店详情页-周边交通景点](https://github.com/crow-n/hotel-searcher/raw/master/preview/hoteldetail2.gif)
 
 &nbsp;
 
