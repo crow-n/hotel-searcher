@@ -44,7 +44,7 @@ class App extends Component {
     }
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.setKeywordChoices(this.state.filter.cityName)
   }
 
@@ -71,8 +71,7 @@ class App extends Component {
 
   setCity(cityName) {
     this.setState(prevState => {
-      let filter = Object.assign({}, prevState.filter)
-      filter = Object.assign(filter, {cityName, keyWords: ''})
+      let filter = Object.assign({}, prevState.filter, {cityName, keyWords: ''})
       return {filter}
     })
   }
@@ -96,7 +95,7 @@ class App extends Component {
   }
   setDate(inDate, outDate) {
     this.setState(prevState => ({
-      filter: Object.assign(prevState.filter, {
+      filter: Object.assign({}, prevState.filter, {
         inDate: this.formatDate(inDate),
         outDate: this.formatDate(outDate)
       })
@@ -105,7 +104,7 @@ class App extends Component {
 
   setKeyWords(keyWords) {
     this.setState(prevState => ({
-      filter: Object.assign(prevState.filter, {
+      filter: Object.assign({}, prevState.filter, {
         keyWords
       })
     }))
@@ -113,7 +112,7 @@ class App extends Component {
 
   setStarAndPrice(star, minPrice, maxPrice) {
     this.setState(prevState => ({
-      filter: Object.assign(prevState.filter, { star, minPrice, maxPrice })
+      filter: Object.assign({}, prevState.filter, { star, minPrice, maxPrice })
     }))
   }
 

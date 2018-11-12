@@ -1,13 +1,14 @@
 import axios from 'axios'
+import { reject } from 'rsvp';
 
 // 常量设置 ========================
 axios.defaults.baseURL = 'https://route.showapi.com/'
 
-const showapi_appid = ''
-const showapi_sign = ''
+const showapi_appid = '78519'
+const showapi_sign = '46dd16062e284b4d91bf18fe551d0ccf'
 
 export const onePageNum = 30
-// 原 获取城市 的接口返回数据格式混乱, 鉴于这些数据基本不会变, 我将它设置为常量
+// 原 获取城市 的接口返回数据混乱, 鉴于这些数据基本不会变, 我将它设置为常量
 export const cities = [{
   letter: 'A',
   list: [
@@ -888,15 +889,15 @@ const facilitiesMap = {
 // 入住 到 离店 最多 28晚
 export async function searchHotel(params) {
   const { 
-    keyWords,
-    page,
-    cityName, 
-    inDate, 
-    outDate, 
-    sortCode,
-    star,
-    minPrice, 
-    maxPrice,
+    keyWords = "",
+    page = "",
+    cityName = "",
+    inDate = "",
+    outDate = "",
+    sortCode = "",
+    star = "",
+    minPrice = "",
+    maxPrice = "",
   } = params
 
   const result = await axios.get('1653-1', {
@@ -914,21 +915,19 @@ export async function searchHotel(params) {
   })
   const res = washResult(result)
   if(typeof res === 'string'){
-    return res
+    return reject(res)
   }
-  const { hotelList, count } = res.data
-  for (let i = 0; i < hotelList.length; i++) {
-    const facilities = hotelList[i].facilities;
-    for (let j = 0; j < facilities.length; j++) {
-      const index = facilities[j];
-      facilities[j] = facilitiesMap[index]
-    }
-  }
+  let { hotelList, count } = res.data
+  hotelList = hotelList.map(hotel => ({
+    ...hotel,
+    facilities: hotel.facilities.map(
+      index => facilitiesMap[index])
+  }))
   return { hotelList, count }
 }
 
 // 查询 筛选条件
-export async function getFilter(cityName) {
+export async function getFilter(cityName = '') {
   const result = await axios.get('1653-1', {
     params: assignParams({ 
       cityName, 
@@ -937,7 +936,7 @@ export async function getFilter(cityName) {
   })
   const res = washResult(result)
   if(typeof res === 'string'){
-    return res
+    return reject(res)
   }
   const filter = res.filterInfo
 
@@ -951,7 +950,7 @@ export async function getFilter(cityName) {
 }
 
 // 查询 酒店详情
-export async function getHotelDetail(hotelId) {
+export async function getHotelDetail(hotelId = '') {
   const result = await axios.get('1653-3', {
     params: assignParams({ 
       hotelId
@@ -959,14 +958,19 @@ export async function getHotelDetail(hotelId) {
   })
   const res = washResult(result)
   if(typeof res === 'string'){
-    return res
+    return reject(res)
   }
   return res.data
 }
 
 // 查询 房间
 export async function getRooms(params) {
-  const { hotelId, inDate, outDate } = params
+  const { 
+    hotelId = '',
+    inDate = '',
+    outDate = '' 
+  } = params
+  
   const result = await axios.get('1653-4', {
     params: assignParams({ 
       hotelId,
@@ -976,7 +980,7 @@ export async function getRooms(params) {
   })
   const res = washResult(result)
   if(typeof res === 'string'){
-    return res
+    return reject(res)
   }
   return res.roomInfo
 }

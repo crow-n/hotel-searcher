@@ -90,7 +90,7 @@ class HotelDetail extends PureComponent {
     rooms: [],
   }
 
-  componentWillMount() {
+  componentDidMount() {
     const hotelId = this.props.match.params.id
     const inDate = this.props.inDate
     const outDate = this.props.outDate
