@@ -1,0 +1,20 @@
+
+.tab-card {
+  overflow: hidden;
+  height: 4rem;
+  @include border($color:$blue);
+  border-radius: .1rem;
+
+  .tab-card-cnt {
+    margin: .2rem;
+
+    .tab-card-para {
+      margin-bottom: .2rem;
+
+      .tab-card-describ {
+        color: $grayColor;
+      }
+    }
+
+  }
+}

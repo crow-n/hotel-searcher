@@ -1,10 +1,14 @@
 import React, { Component } from 'react'
-
+import PropTypes from 'prop-types'
 import { Calendar, Toast } from 'antd-mobile';
 
 class DateSelector extends Component {
+  static propTypes = {
+    setDate: PropTypes.func.isRequired,
+    onCancel: PropTypes.func.isRequired,
+  }
 
-  handleSelect(date, history) {
+  handleSelect = (date, history) => {
     // 最长可住28天
     const maxDateTime = 1000*60*60*24*28
     // 表示选择了 完整区间
@@ -29,7 +33,6 @@ class DateSelector extends Component {
         }
       }
       this.props.setDate(inDate, outDate)
-      setTimeout(this.props.onOpenChange, 500)
       // 让 Calendar 组件 调整区间
       return [inDate, outDate]
     }
@@ -42,8 +45,8 @@ class DateSelector extends Component {
           visible
           initalMonths={12}
           minDate={new Date()}
-          onCancel={this.props.onOpenChange}
-          onSelect={(date, history) => this.handleSelect(date, history)} /> 
+          onCancel={this.props.onCancel}
+          onSelect={this.handleSelect} /> 
     </div>
     )
   }

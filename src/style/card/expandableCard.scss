@@ -1,0 +1,51 @@
+
+.expandable-card {
+  margin: .15rem;
+  
+  // 覆盖 antd-mobile card组件样式
+  &.am-card {
+    padding-bottom: 0;
+
+    .am-card-header {
+      border-bottom: 1px solid #eee;
+    }
+    .am-card-header-content {
+      color: $blue;
+      font-size: .3rem;
+    }
+  }
+
+  .card-body {
+    $itemHeight: .9rem;
+
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    max-height: 2 * $itemHeight;
+    
+    &.card-body-expanded {
+      max-height: none;
+    }
+    
+    .card-item {
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      
+      box-sizing: border-box;
+      width: 25%;
+      height: $itemHeight;
+      padding: .15rem;
+      text-align: center;
+      font-size: .24rem;
+      line-height: 1.5;
+      word-break: break-all;
+      box-shadow: 0 0 1.5px #ccc;
+    }
+  
+    .card-item-more {
+      color: $blue;
+    }
+  }
+}

@@ -1,40 +1,66 @@
 import React, { PureComponent } from 'react'
-import { Icon, SearchBar } from "antd-mobile";
+import PropTypes from 'prop-types'
+import { Icon, SearchBar, Toast } from "antd-mobile";
+import ExpandableCard from "../card/ExpandableCard";
 
-import KeyWordCard from '../card/KeyWordCard';
 
 class KeyWordSelector extends PureComponent {
+  static propTypes = {
+    keyWordChoices: PropTypes.array.isRequired,
+    setKeyWords: PropTypes.func.isRequired,
+    goBack: PropTypes.func.isRequired,
+    onMore: PropTypes.func.isRequired,
+    isFetching: PropTypes.bool,
+    errorMessage: PropTypes.string,
+  }
 
-  handleSearch(value) {
-    this.props.setKeyWords(value)
-    this.props.onOpenChange()
+  componentWillReceiveProps(newProps) {
+    const { isFetching, errorMessage } = newProps
+    if(!isFetching && errorMessage) {
+      Toast.info(errorMessage, 2)
+    }
   }
 
   render() {
-    const keywordChoices = this.props.keywordChoices
+    const { 
+      isFetching, 
+      keyWordChoices, 
+      goBack,
+      setKeyWords,
+      onMore 
+    } = this.props
+    
     return (
-      <div className="keyword-selector">
-        <div className="header">
+      <div className={
+        "keyword-selector " + 
+        (isFetching ? "keyword-selector-fetching" : "")
+      }>
+        <div className="search-header">
           <Icon className="arrow"
             type="left" color="#fff"
-            onClick={this.props.onOpenChange} />
+            onClick={goBack} />
           <SearchBar
             placeholder="关键字/位置/品牌/酒店名"
-            onSubmit={(value) => this.handleSearch(value)} />
+            onSubmit={setKeyWords} />
         </div>
-        <div className="card-block">{
-          keywordChoices.map(keyword => (
-            <KeyWordCard
-              className="card"
-              key={keyword.filterName}
-              title={keyword.filterName}
-              list={keyword.filterProsList}
-              setKeyWords={this.props.setKeyWords}
-              setTwoLevelMenu={this.props.setTwoLevelMenu}
-              twoLevelMenuOpenChange={this.props.twoLevelMenuOpenChange}
-              onOpenChange={this.props.onOpenChange} />
-          ))
-        }</div>
+        <div className="card-block">
+          {
+            keyWordChoices.map(keyword => (
+              <ExpandableCard
+                key={keyword.filterName}
+                title={keyword.filterName}
+                list={keyword.filterProsList}
+                onSubmit={setKeyWords}
+                onMore={onMore} />
+            ))
+          }
+          <div className={
+            "fetching-mask " + 
+            (isFetching ? "fetching-mask-display" : "")
+          }>
+            <div className="fetching-label">正在加载...</div>
+          </div>
+        </div>
       </div>
     )
   }

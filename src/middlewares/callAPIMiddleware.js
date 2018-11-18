@@ -4,6 +4,7 @@ export default function callAPIMiddleware({ dispatch, getState }) {
       types,
       callAPI,
       shouldCallAPI = () => true,
+      beforeCallAPI = () => null,
       payload = {}
     } = action
 
@@ -28,13 +29,15 @@ export default function callAPIMiddleware({ dispatch, getState }) {
       return
     }
 
+    beforeCallAPI(dispatch, getState())
+
     const [requestType, successType, failureType] = types
 
     dispatch(Object.assign({}, payload, {
       type: requestType
     }))
 
-    return callAPI().then(
+    return callAPI(getState()).then(
       response => dispatch(Object.assign({}, payload, {
         response,
         type: successType

@@ -1,0 +1,88 @@
+// 筛选列表项
+.list-item {
+  padding: 0 0.2rem;
+  background-color: #fff;
+  color: $grayColor;
+  
+  .list-item-cnt {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 1rem;
+    @include border-bottom;
+  }
+
+}
+
+// 有 title 的内容样式
+.title-cnt {
+  .title {
+    font-size: .24rem;
+  }
+  .cnt {
+    @include ellipsis;
+    font-size: .4rem;
+    color: $normalColor;
+  }
+}
+
+// 有 日期区间 的内容样式
+.date-range-cnt {
+  display: flex;
+  align-items: center;
+
+  .date-with-title {
+    .title {
+      font-size: .24rem;
+    }
+    .date {
+      font-size: .4rem;
+      color: $normalColor;
+    }
+  }
+  
+  .count-days {
+    $labelHeight: .36rem;
+    height: $labelHeight;
+    margin: 0 .4rem;
+    padding: 0 .12rem;
+    @include border;
+    line-height: $labelHeight;
+    font-size: .24rem;
+    border-radius: 50px;
+
+    .days {
+      color: $normalColor;
+    }
+  }
+}
+
+// 有 placeholder 的内容样式
+.placeholder-cnt {
+  font-size: .4rem;
+
+  &.placeholder-cnt-value {
+    color: $normalColor;
+  }
+}
+
+// 提交按钮
+.submit-item {
+  padding: .2rem;
+  background-color: #fff;
+  
+  .submit-item-wrapper {
+    position: relative;
+
+    .submit-btn {
+      @include special-btn;
+    }
+    
+    .cover-btn-link {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

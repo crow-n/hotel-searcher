@@ -1,0 +1,60 @@
+
+.star-and-price {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 5.4rem;
+  background-color: #fff;
+
+  .wrapper {
+    padding: .4rem .2rem 0;
+  }
+
+  .flex-tags {
+    display: flex;
+    justify-content: space-between;
+    margin-top: .3rem;
+
+    .tag {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 1.7rem;
+      height: .9rem;
+      font-size: .25rem;
+      line-height: 1.4;
+    }
+  }
+
+  .price-displayed {
+    margin-left: .1rem;
+    color: #108ee9;
+    font-size: .25rem;
+  }
+
+  .range-selector {
+    margin: .4rem .6rem 0;
+  }
+
+  .clear-and-submit {
+    display: flex;
+    
+    .btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-grow: 1;
+      height: 1rem;
+      font-size: .4rem;
+    }
+
+    .clear {
+      @include border-top;
+    }
+
+    .submit {
+      @include special-btn;
+    }
+  }
+}

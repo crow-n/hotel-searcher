@@ -1,0 +1,44 @@
+
+
+  // .am-list-item {
+    
+  // }
+.rate-plan-card {
+  display: flex;
+  align-items: center;
+
+  margin: .2rem;
+  padding: .2rem;
+  background-color: #fff;
+  border-radius: .2rem;
+  @include box-shadow;
+
+  .rate-plan-info {
+    flex-grow: 1;
+    @include border-right($color:#eee);
+
+    .stress {
+      margin-right: .4rem;
+      font-size: .3rem;
+    }
+  
+    .tip {
+      font-size: .24rem;
+      color: #666;
+      margin-right: .2rem;
+    }
+  
+    .green {
+      color: $green;
+    }
+  }
+  
+  .price-pay {
+    display: flex;
+    align-items: center;
+
+    .rate-plan-price {
+      margin: 0 .2rem;
+    }
+  }
+}

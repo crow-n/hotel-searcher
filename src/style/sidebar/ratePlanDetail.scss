@@ -1,0 +1,27 @@
+
+.rate-plan-detail {
+  display: flex;
+  flex-direction: column;
+  height: 90vh;
+  background-color: #fff;
+
+  .rate-plan-header {
+    padding-left: .2rem;
+    background-color: #eee;
+    color: #666;
+    font-size: .3rem;
+    line-height: .8rem;
+  }
+
+  .rate-plan-content {
+    overflow: scroll;
+  }
+
+  .rate-plan-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 0.2rem;
+    @include box-shadow;
+  }
+}

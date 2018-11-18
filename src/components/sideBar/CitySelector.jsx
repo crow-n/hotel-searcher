@@ -1,16 +1,12 @@
 import React, { PureComponent } from 'react'
+import PropTypes from 'prop-types'
 import { NavBar, SearchBar, Accordion, List, Icon } from "antd-mobile";
-
 import { cities } from "../../request/hotel";
 
 class CitySelector extends PureComponent {
-  state = {
-    cities
-  }
-
-  handleSelectOrSearch(city) {
-    this.props.setCity(city)
-    this.props.onOpenChange()
+  static propTypes = {
+    goBack: PropTypes.func.isRequired,
+    setCity: PropTypes.func.isRequired,
   }
 
   render() {
@@ -18,21 +14,22 @@ class CitySelector extends PureComponent {
       <div className="city-selector">
         <NavBar 
           icon={<Icon type="left" />}
-          onLeftClick={this.props.onOpenChange} >
+          onLeftClick={this.props.goBack} >
           选择城市
         </NavBar>
         <SearchBar 
           placeholder="手动输入城市"
-          onSubmit={(city) => this.handleSelectOrSearch(city)} />
-        <Accordion>{
-          this.state.cities.map(group => (
+          onSubmit={this.props.setCity} />
+        <Accordion 
+          className="city-list">
+        {
+          cities.map(group => (
             <Accordion.Panel header={group.letter} key={group.letter}>
               <List>{
                 group.list.map(city => (
                   <List.Item 
-                    className="list-item" 
                     key={city}
-                    onClick={() => this.handleSelectOrSearch(city)}>
+                    onClick={() => this.props.setCity(city)}>
                     {city}
                   </List.Item>
                 ))

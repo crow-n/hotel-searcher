@@ -1,0 +1,48 @@
+
+.info-card {
+  padding: 0.2rem;
+  @include border-bottom($color:#eee);
+  background-color: #fff;
+  font-size: .26rem;
+  line-height: 1.4;
+  white-space: normal;
+
+  .info-card-title {
+    margin-bottom: .1rem;
+    
+    &.info-card-title-large {
+      font-size: .36rem;
+    }
+  }
+
+  .info-item {
+    display: flex;
+    margin-bottom: .1rem;
+
+    &.info-item-vertical {
+      flex-direction: column;
+    }
+
+    &.info-item-large-gap {
+      margin-bottom: .24rem;
+    }
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+
+    .info-item-title {
+      flex-shrink: 0;
+      margin-right: .3rem;
+      color: #666;
+
+      &.info-item-title-fix {
+        width: 1.4rem;
+      }
+
+      &.info-item-title-colored {
+        color: #222;
+      }
+    }
+  }
+}

@@ -1,0 +1,65 @@
+
+// 导航栏项
+.navbar-item {
+  &.am-navbar {
+    height: .7rem;
+  }
+}
+
+// 与 导航栏融 为一体的 搜索框
+.header-search-bar {
+  &.am-search {
+    margin-top: -5px;
+    background-color: #108ee9;
+  }
+  .am-search-cancel {
+    display: none;
+    color: #fff;
+  }
+  .am-search-input .am-search-clear-show {
+    display: none;
+  }
+}
+
+// 摆放 下拉项 的 固定栏
+.sticky-bar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  @include box-shadow($alpha:.3);
+}
+
+// 下拉项
+.dropdown-item {
+  flex-grow: 1;
+  width: 2rem;
+  background-color: #fff;
+
+  &:last-of-type .dropdown-item-wrapper {
+    border-right: 0;
+  }
+
+  .dropdown-item-wrapper {
+    $height: .3rem;
+
+    height: $height;
+    margin: .2rem 0;
+    padding: 0 .2rem;
+    @include border-right;
+    
+    @include ellipsis;
+    text-align: center;
+    color: #666;
+    font-size: .26rem;
+    line-height: $height;
+    
+    &.valued {
+      color: $blue;
+    }
+
+    svg {
+      vertical-align: sub;
+    }
+  }
+}

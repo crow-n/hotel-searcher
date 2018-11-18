@@ -15,10 +15,26 @@ const initialState = {
   inDate: formatDate(new Date()),
   outDate: formatDate(new Date(Date.now() + 1000 * 60 * 60 * 24)),
   keyWords: '',
-  star: '',
+  star: [{
+    type: "TWO,BUDGET",
+    display: "二星及以下/经济",
+    selected: false,
+  }, {
+    type: "THREE,CONFORT",
+    display: "三星/舒适",
+    selected: false,
+  }, {
+    type: "FOUR,HIGHEND",
+    display: "四星/高档",
+    selected: false,
+  }, {
+    type: "FIVE,LUXURY",
+    display: "五星/豪华",
+    selected: false,
+  },],
   minPrice: '',
   maxPrice: '',
-  sortCode: 0,
+  sortCode: 1,
   page: 0,
 }
 
@@ -50,21 +66,3 @@ export const filter = (state = initialState, action) => {
       return state
   }
 }
-
-// [{
-//   type: "TWO,BUDGET",
-//   display: "二星及以下/经济",
-//   selected: false,
-// }, {
-//   type: "THREE,CONFORT",
-//   display: "三星/舒适",
-//   selected: false,
-// }, {
-//   type: "FOUR,HIGHEND",
-//   display: "四星/高档",
-//   selected: false,
-// }, {
-//   type: "FIVE,LUXURY",
-//   display: "五星/豪华",
-//   selected: false,
-// },]

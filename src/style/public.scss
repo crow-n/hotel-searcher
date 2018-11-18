@@ -1,0 +1,56 @@
+// var =====================
+$screenWidth: 7.5rem;
+$normalColor: #222;
+$grayColor: #999;
+$blue: #4289ff;
+$red: #ff4d1d;
+$orange: #ff6913;
+$green: #2eb000;
+
+// mixin =====================
+@mixin fixed() {
+  display: fixed;
+}
+
+@mixin border($width:1px, $color:#ddd) {
+  border: $width solid $color;
+}
+@mixin border-top($width:1px, $color:#ddd) {
+  border-top: $width solid $color;
+}
+@mixin border-bottom($width:1px, $color:#ddd) {
+  border-bottom: $width solid $color;
+}
+@mixin border-left($width:1px, $color:#ddd) {
+  border-left: $width solid $color;
+}
+@mixin border-right($width:1px, $color:#ddd) {
+  border-right: $width solid $color;
+}
+
+@mixin box-shadow($width:6px, $alpha:.1) {
+  box-shadow: 0 0 $width rgba(0,0,0,$alpha);
+}
+
+@mixin round() {
+  border-radius: 50%;
+}
+
+@mixin special-btn() {
+  background-color: #ff6913;
+  color: #fff;
+}
+
+@mixin ellipsis() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin clearfix() {
+  &::after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+}

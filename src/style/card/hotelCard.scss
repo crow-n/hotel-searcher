@@ -1,0 +1,58 @@
+
+.hotel-card {
+  display: flex;
+  align-items: stretch;
+  @include border-bottom;
+  background-color: #fff;
+
+  .img-box {
+    flex-shrink: 0;
+    position: relative;
+    width: 2rem;
+
+    .hotel-card-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .info-box {
+    flex-grow: 1;
+    padding: 0.15rem 0.15rem 0;
+    line-height: 1.5;
+
+    .info-tit {
+      font-size: .3rem;
+    }
+
+    .info-address {
+      color: #666;
+    }
+
+    .facility-tag {
+      display: inline-block;
+      margin-right: .08rem;
+      padding: 0 .04rem;
+      @include border($color:$blue);
+
+      font-size: .24rem;
+      word-break: keep-all;
+      color: $blue;
+      border-radius: 4px;
+    }
+  }
+
+  .info-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: $grayColor;
+
+    .info-star {
+      font-size: .26rem;
+    }
+  }
+}

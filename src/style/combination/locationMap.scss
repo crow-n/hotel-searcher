@@ -1,0 +1,46 @@
+
+.address-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: .8rem;
+  padding: .2rem;
+  margin: .2rem;
+  background-color: #fff;
+  border-radius: .2rem;
+  @include box-shadow;
+
+  .address {
+    word-break: break-all;
+  }
+
+  .icon-dingwei {
+    color: $blue;
+    font-size: .5rem;
+  }
+}
+
+.map-container {
+  position: relative;
+  width: $screenWidth;
+  height: 100%;
+
+  .back {
+    $diameter: .8rem;
+    
+    position: absolute;
+    z-index: 10;
+    top: .3rem;
+    left: .3rem;
+
+    width: $diameter;
+    height: $diameter;
+    background-color: #fff;
+    @include box-shadow($alpha:.3);
+    @include round;
+
+    svg {
+      height: $diameter;
+    }
+  }
+}

@@ -1,0 +1,21 @@
+
+.loading-footer {
+  padding: 30px;
+  text-align: center;
+}
+
+.to-top {
+  display: none;
+  position: fixed;
+  right: .3rem;
+  bottom: .6rem;
+  width: .8rem;
+  height: .8rem;
+  background-color: #fff;
+  @include box-shadow($alpha:.3);
+  @include round;
+
+  &.to-top-active {
+    display: block;
+  }
+}

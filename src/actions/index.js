@@ -21,6 +21,16 @@ export const setMaxPrice = makeActionCreator(types.SET_MAXPRICE, 'maxPrice')
 export const setSortCode = makeActionCreator(types.SET_SORTCODE, 'sortCode')
 export const setPage = makeActionCreator(types.SET_PAGE, 'page')
 
+export const toggleCityDrawer = makeActionCreator(types.TOGGLE_CITY_DRAWER)
+export const toggleDateDrawer = makeActionCreator(types.TOGGLE_DATE_DRAWER)
+export const toggleKeyWordDrawer = makeActionCreator(types.TOGGLE_KEYWORD_DRAWER)
+export const toggleKeyWordDetailDrawer = makeActionCreator(types.TOGGLE_KEYWORDDETAIL_DRAWER)
+export const toggleStarPriceDrawer = makeActionCreator(types.TOGGLE_STARPRICE_DRAWER)
+export const toggleSortOrderDrawer = makeActionCreator(types.TOGGLE_SORTORDER_DRAWER)
+export const togglePicBannerDrawer = makeActionCreator(types.TOGGLE_PICBANNER_DRAWER)
+export const toggleMapDrawer = makeActionCreator(types.TOGGLE_MAP_DRAWER)
+export const toggleRoomsDrawer = makeActionCreator(types.TOGGLE_ROOMS_DRAWER)
+
 export const loadKeyWordChoicesIfNeeded = (cityName) => ({
   types: [
     types.REQUEST_KEYWORDCHOICES_POSTS,
@@ -32,34 +42,59 @@ export const loadKeyWordChoicesIfNeeded = (cityName) => ({
   payload: { cityName }
 })
 
-export const loadHotelsIfNotFetching = (filter) => ({
+const mapFilter = (state) => {
+  const { filter } = state
+  return {
+    ...filter,
+    star: filter.star.reduce(
+      (str,el) => el.selected 
+        ? str + el.type + ',' 
+        : str
+    , '')
+  }
+}
+
+const callSearchHotelsAPI = (state) => 
+  hotelAPI.searchHotel(mapFilter(state))
+
+const resetPageIfPageNotZero = (dispatch, state) => {
+  if(state.filter.page !== 0) {
+    dispatch(setPage(0))
+  }
+}
+
+export const resetPageAndLoadHotels = () => ({
   types: [
     types.REQUEST_HOTELS_POSTS,
     types.SET_HOTELS,
     types.RECEIVE_HOTELS_FAILURE
   ],
-  shouldCallAPI: (state) => !state.hotels.aboutUI.isFetching,
-  callAPI: () => hotelAPI.searchHotel(filter),
+  beforeCallAPI: resetPageIfPageNotZero,
+  callAPI: callSearchHotelsAPI,
 })
 
-const shouldPushHotels = (state) => {
-  const hotels = state.hotels
-  const items = hotels.items
+const shouldPushHotels= (state) => {
+  const { hotels } = state
+  const { items, aboutUI } = hotels
   if(items.hotelList.length >= items.count) {
     return false
   }
-
-  return !hotels.aboutUI.isFetching
+  return !aboutUI.isFetching
 }
 
-export const pushHotelsIfAllowed = (filter) => ({
+const increasePage = (dispatch, state) => {
+  dispatch(setPage(state.filter.page + 1))
+}
+
+export const increasePageAndPushHotelsIfAllowed = () => ({
   types: [
     types.REQUEST_HOTELS_POSTS,
     types.PUSH_HOTELS,
     types.RECEIVE_HOTELS_FAILURE
   ],
   shouldCallAPI: shouldPushHotels,
-  callAPI: () => hotelAPI.searchHotel(filter),
+  beforeCallAPI: increasePage,
+  callAPI: callSearchHotelsAPI,
 })
 
 export const loadHotelDetailIfNeeded = (hotelId) => ({
@@ -73,7 +108,7 @@ export const loadHotelDetailIfNeeded = (hotelId) => ({
   payload: { hotelId }
 })
 
-export const setRooms = (hotelId, inDate, outDate) => ({
+export const loadRooms = (hotelId, inDate, outDate) => ({
   types: [
     types.REQUEST_ROOMS_POSTS,
     types.RECEIVE_ROOMS_SUCCESS,

@@ -1,0 +1,20 @@
+
+.room-list {
+  .am-accordion-item {
+    .am-accordion-header {
+      padding-left: 0;
+      padding-right: 40px;
+      height: initial;
+    
+      .arrow {
+        top: 0;
+        bottom: 0;
+        margin: auto;
+      }
+    }
+
+    .am-accordion-content {
+      background: initial;
+    }
+  }
+}

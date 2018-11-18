@@ -1,28 +1,56 @@
 import React, { PureComponent } from 'react'
+import PropTypes from 'prop-types'
 import { Carousel } from "antd-mobile";
 
 class PicCarousel extends PureComponent {
+  static propTypes = {
+    pics: PropTypes.arrayOf(
+      PropTypes.object.isRequired
+    ).isRequired,
+    autoplay: PropTypes.bool,
+    onClick: PropTypes.func,
+    inner: PropTypes.bool,
+  }
+
   state = {
-    nowNum: 1,
-    name: ''
+    picIndex: 1,
+    picName: ''
   }
 
   componentDidMount() {
-    this.setState({ name: this.props.pics[0].picName })
+    this.setState({ 
+      picName: this.props.pics[0].picName
+    })
+  }
+
+  afterChange = (i) => {
+    this.setState({ 
+      picIndex: i + 1,
+      picName: this.props.pics[i].picName
+    })
   }
 
   render() {
-    const pics = this.props.pics
+    const { picIndex, picName } = this.state
+    const { 
+      pics, 
+      autoplay = false, 
+      onClick = () => {}, 
+      inner = false 
+    } = this.props
+
     return (
-      <div className="pic-carousel" onClick={this.props.onOpenChange}>
-        <div className="pic-num">{this.state.nowNum}/{pics.length}</div>
+      <div className={
+        (inner ? "pic-carousel-inner" : "pic-carousel")
+      } onClick={onClick}>
+        <div className="pic-num">
+          {picIndex}/{pics.length}
+        </div>
         <Carousel
+          autoplay={autoplay}
           infinite={true}
           dots={false}
-          afterChange={i => this.setState({ 
-            nowNum: i + 1,
-            name: pics[i].picName
-         })}
+          afterChange={this.afterChange}
         >{
           pics.map((pic) =>
             <div className="pic-carousel-item" key={pic.picId}>
@@ -30,7 +58,7 @@ class PicCarousel extends PureComponent {
             </div>
           )
         }</Carousel>
-        <div className="pic-name">{this.state.name}</div>
+        <div className="pic-name">{picName}</div>
       </div>
     )
   }

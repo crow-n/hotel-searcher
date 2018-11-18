@@ -1,0 +1,42 @@
+
+.header-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  height: 3.6rem;
+  padding: 0.2rem;
+  background: no-repeat center / cover;
+
+  color: #fff;
+  font-size: .24rem;
+  line-height: 1.5;
+
+  .back {
+    $diameter: .6rem;
+    
+    width: $diameter;
+    height: $diameter;
+    background-color: rgba(0,0,0,.3);
+    text-align: center;
+    @include round;
+
+    svg {
+      height: $diameter;
+      vertical-align: bottom;
+    }
+  }
+
+  .card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    .info-name {
+      font-size: .32rem;
+    }
+    .info-des {
+      margin-right: .2rem;
+    }
+  }
+}

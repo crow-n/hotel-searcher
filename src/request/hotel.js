@@ -4,8 +4,8 @@ import { reject } from 'rsvp';
 // 常量设置 ========================
 axios.defaults.baseURL = 'https://route.showapi.com/'
 
-const showapi_appid = '78519'
-const showapi_sign = '46dd16062e284b4d91bf18fe551d0ccf'
+const showapi_appid = ''
+const showapi_sign = ''
 
 export const onePageNum = 30
 // 原 获取城市 的接口返回数据混乱, 鉴于这些数据基本不会变, 我将它设置为常量
@@ -883,6 +883,11 @@ const facilitiesMap = {
   12: "24小时热水",
 }
 
+export const sortCodeMap = {
+  1: '推荐优先',
+  2: '低价优先',
+  3: '高价优先',
+}
 
 // 请求 ============================
 // 查询 酒店 列表,
@@ -995,7 +1000,7 @@ function washResult(result) {
   }
   const res = data.showapi_res_body
   if(res.ret_code) {
-    return res.remark
+    return res.remark || "未知错误!"
   }
   return res
 }

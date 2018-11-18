@@ -51,7 +51,7 @@ export const keyWordChoices = combineReducers({
   )
 })
 
-const hotelItems = (state = [], action) => {
+const hotelItems = (state = {count: 0, hotelList: []}, action) => {
   switch (action.type) {
     case types.SET_HOTELS:
       return action.response

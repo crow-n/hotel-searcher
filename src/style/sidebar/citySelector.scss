@@ -1,0 +1,26 @@
+
+.city-selector {
+  width: $screenWidth;
+
+  // 覆盖 antd-mobile 搜索框样式
+  .am-search {
+    background-color: #c6dbff;
+
+    .am-search-input {
+      border-radius: 20px;
+    }
+  }
+
+  // 覆盖 antd-mobile 手风琴样式
+  .city-list {
+    .am-accordion-header {
+      background-color: #f8f8f8;
+      border-bottom: 1px solid #ddd !important;
+    }
+
+    .am-list-line {
+      border-bottom: 1px solid #ddd !important;
+
+    }
+  }
+}

@@ -1,0 +1,48 @@
+
+.room-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-size: .24rem;
+  line-height: 1.5;
+  
+  .img-info-box {
+    display: flex;
+    
+    .room-img {
+      position: relative;
+      width: 2rem;
+  
+      img {
+        width: 100%;
+        height: 100%;
+      }
+  
+      .pic-num {
+        position: absolute;
+        right: .1rem;
+        bottom: .1rem;
+        padding: 0 .15rem;
+        background-color: rgba(0,0,0,.3);
+
+        color: #fff;
+        border-radius: .2rem;
+      }
+    }
+
+    .room-info {
+      padding: 0.2rem;
+
+      .room-name {
+        font-size: .3rem;
+      }
+
+      .tip {
+        color: #666;
+        margin-right: .2rem;
+      }
+
+    }
+  }
+}
