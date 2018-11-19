@@ -25,7 +25,7 @@
 .sticky-bar {
   position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: 3;
   display: flex;
   @include box-shadow($alpha:.3);
 }

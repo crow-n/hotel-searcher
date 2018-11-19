@@ -34,7 +34,7 @@ const initialState = {
   },],
   minPrice: '',
   maxPrice: '',
-  sortCode: 1,
+  sortCode: '1',
   page: 0,
 }
 

@@ -7,7 +7,7 @@ class TabCard extends PureComponent {
     return (
       <div className="tab-card">
         <Tabs
-          initialPage={1}
+          initialPage={0}
           tabBarPosition="left"
           tabDirection="vertical"
           tabs={tabs}
