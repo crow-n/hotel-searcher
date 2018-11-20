@@ -1,6 +1,7 @@
 {
   "name": "hotel-booking",
   "version": "0.1.0",
+  "homepage": "./",
   "private": true,
   "dependencies": {
     "antd-mobile": "^2.2.6",

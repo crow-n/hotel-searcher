@@ -10,13 +10,13 @@ class InfoItem extends PureComponent {
   }
 
   render() {
-    const { 
+    const {
       title,
       largeGap = false,
       colored = false,
       titleFixed = false,
       vertical = false,
-      children 
+      children
     } = this.props
 
     return (
@@ -48,11 +48,14 @@ class InfoCard extends PureComponent {
     const { title, large = false, children } = this.props
     return (
       <div className="info-card">
-        <div className={"info-card-title" +
-          (large ? " info-card-title-large" : "")
-        }>
-          {title}
-        </div>
+        {
+          title &&
+          <div className={"info-card-title" +
+            (large ? " info-card-title-large" : "")
+          }>
+            {title}
+          </div>
+        }
         {children}
       </div>
     )

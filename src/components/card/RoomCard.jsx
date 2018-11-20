@@ -23,14 +23,13 @@ class RoomCard extends PureComponent {
                 <sup>2</sup>
               </span>
               <span className="tip">{room.floor}</span>
+            </p>
+            <p>
               <span className="tip">{room.isExtraBedNum}</span>
-            </p>
-            <p>
               <span className="tip">{room.bedDescription}</span>
-              <span className="tip">{room.isExtraBed}</span>
             </p>
             <p>
-              <span className="tip">{room.noSmoking}</span>
+              <span className="tip">{room.isExtraBed}</span>
             </p>
           </div>
         </div>
